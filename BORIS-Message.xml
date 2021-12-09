@@ -1,0 +1,69 @@
+<GetBeneficialOwnerDetailsResponse xmlns="http://ec.europa.eu/boris/v1_0/GetBeneficialOwnerDetailsResponse"
+                                   xmlns:bbc="http://ec.europa.eu/boris/v1_0/common/BasicComponents"
+                                   xmlns:bacen="http://ec.europa.eu/boris/v1_0/common/AggregateComponents/Entity"
+                                   xmlns:baclf="http://ec.europa.eu/boris/v1_0/common/AggregateComponents/LegalForm"
+                                   xmlns:bacad="http://ec.europa.eu/boris/v1_0/common/AggregateComponents/Addresses"
+                                   xmlns:bacin="http://ec.europa.eu/boris/v1_0/common/AggregateComponents/Interest"
+                                   xmlns:bacdo="http://ec.europa.eu/boris/v1_0/common/AggregateComponents/Document">
+    <BeneficialOwnerDetailsList>
+        <Entity>
+            <bacen:LegalEntityName>Name</bacen:LegalEntityName>
+            <baclf:LegalForm>
+                <bbc:LegalFormType>LegalFormType</bbc:LegalFormType>
+                <bbc:LegalFormCode>C3_FUND_01</bbc:LegalFormCode>
+            </baclf:LegalForm>
+            <bacad:RegisteredOffice>
+                <bbc:Country>ROU</bbc:Country>
+            </bacad:RegisteredOffice>
+            <bacen:Price currencyID="EUR">10</bacen:Price>
+        </Entity>
+        <!-- Optional -->
+        <PaymentReference>12345678</PaymentReference>
+        <bbc:NoBeneficialOwners/>
+    </BeneficialOwnerDetailsList>
+    <BeneficialOwnerDetailsList>
+        <Entity>
+            <bacen:LegalEntityName>Name</bacen:LegalEntityName>
+            <baclf:LegalForm>
+                <bbc:LegalFormType>LegalFormType</bbc:LegalFormType>
+                <bbc:LegalFormCode>C1_CRPE_01</bbc:LegalFormCode>
+            </baclf:LegalForm>
+            <bacad:RegisteredOffice>
+                <bbc:Country>ROU</bbc:Country>
+            </bacad:RegisteredOffice>
+            <bacen:Price currencyID="EUR">1000</bacen:Price>
+        </Entity>
+        <!-- Optional -->
+        <PaymentReference>12345679</PaymentReference>
+        <BeneficialOwnerList>
+            <BeneficialOwner>
+                <UnknownBirthDate/>
+                <PlaceOfBirth>Bucharest</PlaceOfBirth>
+                <Nationality>ROU</Nationality>
+                <CountryOfResidence>LUX</CountryOfResidence>
+                <NatureAndExtentOfInterestHeldList>
+                    <bacin:NatureAndExtentHeld>
+                        <bacin:NatureOfInterestHeld>
+                            <bacin:LegalEntityInterest>
+                                <bbc:Type>CONTROL_THROUGH_OWNERSHIP</bbc:Type>
+                            </bacin:LegalEntityInterest>
+                        </bacin:NatureOfInterestHeld>
+                        <bacin:Extent>0.5</bacin:Extent>
+                    </bacin:NatureAndExtentHeld>
+                </NatureAndExtentOfInterestHeldList>
+                <RegistrationDocuments>
+                    <bacdo:Document>
+                        <bbc:AttachmentReference>attachment-1</bbc:AttachmentReference>
+                        <bacdo:Title>IdentificationDocument-1</bacdo:Title>
+                    </bacdo:Document>
+                    <bacdo:Document>
+                        <bbc:AttachmentReference>attachment-2</bbc:AttachmentReference>
+                        <bacdo:Title>IdentificationDocument-2</bacdo:Title>
+                    </bacdo:Document>
+                </RegistrationDocuments>
+                <Surname>IONESCU</Surname>
+                <Firstnames>Lucian Marian Cosmin</Firstnames>
+            </BeneficialOwner>
+        </BeneficialOwnerList>
+    </BeneficialOwnerDetailsList>
+</GetBeneficialOwnerDetailsResponse>

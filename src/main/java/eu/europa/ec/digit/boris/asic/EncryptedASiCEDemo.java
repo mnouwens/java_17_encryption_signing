@@ -27,6 +27,7 @@ import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,17 +84,17 @@ public class EncryptedASiCEDemo {
         // Sign the ASiC-E container using the private key of the sender
         writer.sign(new SignatureHelper(senderKeyRepository.getKeyStore(), senderKeyRepository.getKeyStorePassword(), senderKeyRepository.getKeyAlias(), senderKeyRepository.getPrivateKeyPassword()));
 
-
-
-        return IOUtils.toString(byteArrayOutputStream.toByteArray(), "UTF-8");
+        return Base64.getEncoder().encodeToString(byteArrayOutputStream.toByteArray());
+//        return byteArrayOutputStream.toByteArray();
+//        return IOUtils.toString(byteArrayOutputStream.toByteArray(), "UTF-8");
     }
 
     private static void validateAndDecryptAsicContainerOnReceiverSide(String stringData) {
         KeyRepository receiverKeyRepository = keyRepositories.getReceiverKeyRepository();
-
+        KeyRepository senderKeyRepository = keyRepositories.getSenderKeyRepository();
         try {
 
-            InputStream asicContainerByteArrayInputStream = IOUtils.toInputStream(stringData,"UTF-8");
+            InputStream asicContainerByteArrayInputStream = new ByteArrayInputStream(Base64.getDecoder().decode(stringData));
             AsicReader asicReader = AsicReaderFactory.newFactory().open(asicContainerByteArrayInputStream);
 
             PrivateKey receiverPrivateKey = (PrivateKey) receiverKeyRepository.getKeyStore().getKey(receiverKeyRepository.getKeyAlias(), receiverKeyRepository.getPrivateKeyPassword().toCharArray());
@@ -104,7 +105,7 @@ public class EncryptedASiCEDemo {
             Map<String, ByteArrayOutputStream> fileMap = readAsicContainer(reader);
 
             // Validate attached certificate: it should match the certificate attached to the supposed sender received from IKAR
-            if (isSenderCertificateValid(reader, receiverKeyRepository.getExternalCertificate())) {
+            if (isSenderCertificateValid(reader, senderKeyRepository.getExternalCertificate())) {
                 System.out.println("Sender certificate is valid");
 
                 String rootFileName = reader.getAsicManifest().getRootfile();

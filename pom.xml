@@ -42,16 +42,16 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>eu.europa.ec.digit.boris.messages</groupId>
-            <artifactId>boris-jaxb</artifactId>
-            <version>1.0.0-RC21</version>
-        </dependency>
-        <dependency>
-            <groupId>eu.europa.ec.digit.message-container</groupId>
-            <artifactId>message-container-jaxb</artifactId>
-            <version>1.0.2-RC2</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>eu.europa.ec.digit.boris.messages</groupId>-->
+<!--            <artifactId>boris-jaxb</artifactId>-->
+<!--            <version>1.0.0-RC21</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>eu.europa.ec.digit.message-container</groupId>-->
+<!--            <artifactId>message-container-jaxb</artifactId>-->
+<!--            <version>1.0.2-RC2</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>no.difi.commons</groupId>
             <artifactId>commons-asic</artifactId>
@@ -72,22 +72,6 @@
             <artifactId>bcprov-ext-jdk15on</artifactId>
             <version>1.70</version>
         </dependency>
-
-        <dependency>
-            <groupId>nl.kvk.boris</groupId>
-            <artifactId>boris-backend-api</artifactId>
-            <version>1.0.17</version>
-        </dependency>
-        <dependency>
-            <groupId>nl.kvk.boris</groupId>
-            <artifactId>boris-search-api</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>nl.kvk.bris</groupId>-->
-<!--            <artifactId>bris-ontvanger-wsdl</artifactId>-->
-<!--            <version>1.0.0</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-jaxb</artifactId>
